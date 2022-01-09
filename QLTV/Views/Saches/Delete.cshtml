@@ -1,0 +1,81 @@
+﻿@model QLTV.Models.Sach
+@using QLTV.Models
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa?</h3>
+<div>
+    <h4>Sách</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maloai.Tenloaisach)
+        </dd>
+
+        <dt>
+            Tên sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensach)
+        </dd>
+
+        <dt>
+            Tác giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tacgia)
+        </dd>
+
+        <dt>
+            Nhà xuất bản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NXB)
+        </dd>
+
+        <dt>
+            Năm xuất bản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Namxuatban)
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Hinh)*@
+            @Html.Image("../../" + Model.Hinh, "", "100")
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về danh mục sách", "Index")
+        </div>
+    }
+</div>

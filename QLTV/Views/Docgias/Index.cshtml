@@ -1,0 +1,64 @@
+﻿@model IEnumerable<QLTV.Models.Docgia>
+
+@{
+    ViewBag.Title = "độc giả";
+}
+
+<h2>Danh mục độc giả</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+    @*@using (Html.BeginForm())
+    {
+    <p>
+        Tìm kiếm: @Html.TextBox("searchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+}*@
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Tên độc giả
+            </th>
+            <th>
+                Ngày sinh
+            </th>
+            <th>
+                Giới tính
+            </th>
+            <th>
+                Địa chỉ
+            </th>
+            <th>
+                Ngày cấp thẻ
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tendg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaysinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gioitinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diachi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaycapthe)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Madg }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Madg }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Madg })
+                </td>
+            </tr>
+        }
+
+    </table>

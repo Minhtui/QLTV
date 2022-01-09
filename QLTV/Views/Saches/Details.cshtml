@@ -1,0 +1,81 @@
+﻿@model QLTV.Models.Sach
+@using QLTV.Models
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Sách</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Maloai.Tenloaisach)
+        </dd>
+
+        <dt>
+            Tên sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tensach)
+        </dd>
+
+        <dt>
+            Tác giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tacgia)
+        </dd>
+
+        <dt>
+            Nhà xuất bản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NXB)
+        </dd>
+
+        <dt>
+            Năm xuất bản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Namxuatban)
+        </dd>
+
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soluong)
+        </dd>
+
+        <dt>
+            Hình ảnh
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.Hinh)*@
+            @Html.Image("../../" + Model.Hinh, "", "100")
+        </dd>
+        <dd >
+            <br />
+            <a class="btn btn-default" @Html.ActionLink("Mượn sách", "Index", "Phieumuons")
+                
+            </a>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Masach }) |
+    @Html.ActionLink("Trở về danh mục sách", "Index")
+</p>

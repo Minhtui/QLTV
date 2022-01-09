@@ -1,0 +1,10 @@
+﻿<ul class="dropdown-menu">
+    @foreach (var item in ViewBag.Tenloaisach)
+    {
+        <li class="list-group-item">
+            <a href="@Url.Action("Index", "Home", new {Maloaisach = item.Key})">
+                @item.Value
+            </a>
+        </li>
+    }
+</ul>

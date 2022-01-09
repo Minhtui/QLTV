@@ -1,0 +1,40 @@
+﻿@model QLTV.Models.Chitietphieumuon
+
+@{
+    ViewBag.Title = "Xóa";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa?</h3>
+<div>
+    <h4>Chi tiết phiếu mượn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã độc giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phieumuon.Madg)
+        </dd>
+
+        <dt>
+            Tên sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sach.Tensach)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về danh mục phiếu mượn", "Index", "Phieumuons")
+        </div>
+    }
+</div>

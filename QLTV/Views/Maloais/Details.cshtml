@@ -1,0 +1,26 @@
+﻿@model QLTV.Models.Maloai
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Mã loại sách</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenloaisach)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Maloaisach }) |
+    @Html.ActionLink("Trở về danh mục mã loại sách", "Index")
+</p>

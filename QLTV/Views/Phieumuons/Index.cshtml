@@ -1,0 +1,67 @@
+﻿@model IEnumerable<QLTV.Models.Phieumuon>
+
+@{
+    ViewBag.Title = "Phiếu mượn sách";
+}
+
+<h2>Danh mục phiếu mượn sách</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+    @*@using (Html.BeginForm())
+    {
+    <p>
+        Tìm kiếm: @Html.TextBox("searchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+}*@
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Mã phiếu mượn
+            </th>
+            <th>
+                Tên độc giả
+            </th>
+            <th>
+                Tên nhân viên
+            </th>
+            <th>
+                Ngày lập phiếu
+            </th>
+            <th>
+                Ngày trả
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @*Truyền tham số mà Maphieu sang Action Index trong ChitietphieumuonsController*@
+                    <a href="@Url.Action("Index", "Chitietphieumuons", new {Maphieu = item.Maphieu})">
+
+                        @Html.DisplayFor(modelItem => item.Maphieu)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Docgia.Tendg)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nhanvien.Tennv)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaylapphieu)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ngaytra)
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Maphieu }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Maphieu })
+                </td>
+            </tr>
+        }
+
+    </table>

@@ -1,0 +1,32 @@
+﻿@model QLTV.Models.Maloai
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa?</h3>
+<div>
+    <h4>Mã loại sách</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên loại sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tenloaisach)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về danh mục mã loại sách", "Index")
+        </div>
+    }
+</div>

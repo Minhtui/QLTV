@@ -1,0 +1,64 @@
+﻿@model QLTV.Models.Docgia
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa?</h3>
+<div>
+    <h4>Độc giả</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên độc giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tendg)
+        </dd>
+
+        <dt>
+            Ngày sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaysinh)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gioitinh)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
+        <dt>
+            Ngày cấp thẻ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaycapthe)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về danh mục độc giả", "Index")
+        </div>
+    }
+</div>

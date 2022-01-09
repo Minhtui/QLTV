@@ -1,0 +1,58 @@
+﻿@model QLTV.Models.Docgia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Độc giả</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên độc giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tendg)
+        </dd>
+
+        <dt>
+            Ngày sinh
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaysinh)
+        </dd>
+
+        <dt>
+            Giới tính
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gioitinh)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Diachi)
+        </dd>
+
+        <dt>
+            Ngày cấp thẻ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaycapthe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Madg }) |
+    @Html.ActionLink("Trở về danh mục độc giả", "Index")
+</p>

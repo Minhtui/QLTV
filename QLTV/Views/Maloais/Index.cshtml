@@ -1,0 +1,33 @@
+﻿@model IEnumerable<QLTV.Models.Maloai>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Danh mục mã loại sách</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Tên loại sách 
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tenloaisach)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.Maloaisach }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.Maloaisach }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.Maloaisach })
+        </td>
+    </tr>
+}
+
+</table>

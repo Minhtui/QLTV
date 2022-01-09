@@ -1,0 +1,50 @@
+﻿@model QLTV.Models.Phieumuon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Phiếu mượn sách</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên độc giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Docgia.Tendg)
+        </dd>
+
+        <dt>
+            Tên nhân viên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nhanvien.Tennv)
+        </dd>
+
+        <dt>
+            Ngày lập phiếu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaylapphieu)
+        </dd>
+
+        <dt>
+            Ngày trả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ngaytra)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.Maphieu }) |
+    @Html.ActionLink("Trở về danh mục phiếu mượn", "Index")
+</p>

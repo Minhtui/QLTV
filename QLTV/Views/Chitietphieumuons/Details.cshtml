@@ -1,0 +1,34 @@
+﻿@model QLTV.Models.Chitietphieumuon
+
+@{
+    ViewBag.Title = "Chi tiết";
+}
+
+<h2>Chi tiết</h2>
+
+<div>
+    <h4>Chi tiết phiếu mượn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã độc giả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phieumuon.Madg)
+        </dd>
+
+        <dt>
+            Tên sách
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sach.Tensach)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaCTPM }) |
+    @Html.ActionLink("Trở về danh mục phiếu mượn", "Index", "Phieumuons")
+</p>

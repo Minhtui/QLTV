@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Quản lý thư viện</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        a {
+            color: #b4914c;
+        }
+
+        .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+            background-color: #b4914c;
+        }
+
+        .navbar-inverse .navbar-brand {
+            color: #b4914c;
+        }
+        .navbar-inverse .navbar-nav > li > a {
+            color: #b4914c;
+        }
+        .btn-info {
+            color: #fff;
+            background-color: #b4914c;
+            border-color: #b4914c;
+        }
+    </style>
+</head>
+<body>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="~/ImagesLayout/banner.png" />
+            </div>
+        </div>
+    </div>
+
+    <div class="navbar navbar-inverse ">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("LIBRARY ME AND YOU", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Loại sách
+                            <span class="caret"></span>
+                        </a>
+                        @{Html.RenderAction("Index", "Menu");}
+                    </li>
+                </ul>
+                @* Hiện lời chào đăng nhập *@
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        @if (Request.Cookies["Username"] != null)
+                        {
+                            <a>Chào mừng @Request.Cookies["Username"].Value !</a>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-3 sidenav">
+        <h4>LIBRARY MANAGE</h4>
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active">@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Sách", "Index", "Saches")</li>
+            <li>@Html.ActionLink("Nhân viên", "Index", "Nhanviens")</li>
+            <li>@Html.ActionLink("Độc giả", "Index", "Docgias")</li>
+            <li>@Html.ActionLink("Phiếu mượn sách", "Index", "Phieumuons")</li>
+        </ul><br>
+        @using (Html.BeginForm())
+        {
+            <p></p>
+            <div class="form-group form-inline">
+                @Html.TextBox("SearchString", "", new { @class = "form-control", @placeholder = "Tìm kiếm..." })
+                <input type="submit" class="btn btn-default" value="Tìm" />
+            </div>
+        }
+    </div>
+
+    <div class="col-sm-9">
+        @RenderBody()
+        <hr />
+        <footer>
+            
+            <div id="current-time" class="hm-foot-para">
+                <script>
+                    var curDate = new Date();
+
+                    // Ngày hiện tại
+                    var curDay = curDate.getDate();
+
+                    // Tháng hiện tại
+                    var curMonth = curDate.getMonth() + 1;
+
+                    // Năm hiện tại
+                    var curYear = curDate.getFullYear();
+
+                    // Gán vào thẻ HTML
+                    document.getElementById('current-time').innerHTML = curDay + "/" + curMonth + "/" + curYear;
+                </script>
+                <p>My LIBRARY and you</p>
+            </div>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

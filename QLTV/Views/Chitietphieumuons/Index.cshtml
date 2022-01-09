@@ -1,0 +1,52 @@
+﻿@model IEnumerable<QLTV.Models.Chitietphieumuon>
+
+@{
+    ViewBag.Title = "Chi tiết phiếu mượn";
+}
+
+<h2>Danh mục chi tiết phiếu mượn</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+@foreach (var m in ViewBag.Main)
+{
+    <h3>
+        Số phiếu mượn: @m.phieumuon.Maphieu
+    </h3>
+    <h3>
+        Tên độc giả: @m.docgia.Tendg
+    </h3>
+}
+<table class="table">
+    <tr>
+        <th>
+            STT
+        </th>
+        <th>
+            Tên sách
+        </th>
+        <th></th>
+    </tr>
+    @{ 
+        int i = 0;
+    }
+
+    @foreach (var item in Model)
+    {
+        i++;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sach.Tensach)
+            </td>
+            <td>
+                @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaCTPM }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MaCTPM })
+            </td>
+        </tr>
+    }
+
+</table>

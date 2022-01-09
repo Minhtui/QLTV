@@ -1,0 +1,93 @@
+﻿@model PagedList.IPagedList<QLTV.Models.Sach>
+@using QLTV.Models;
+@using PagedList.Mvc;
+<link rel="stylesheet" href="~/Content/PagedList.css" />
+
+@{
+    ViewBag.Title = "Sách";
+}
+
+<h2>Danh mục sách</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+    
+    @*@using (Html.BeginForm())
+    {
+    <p>
+        Tìm kiếm: @Html.TextBox("searchString") <input type="submit" value="Tìm kiếm" />
+    </p>
+       }*@
+
+    <p />
+
+    <table class="table">
+        <tr>
+            <th>
+                Tên loại sách
+            </th>
+            <th>
+                @Html.ActionLink("Tên sách", "Index", new { sortOrder = ViewBag.SortByName })
+            </th>
+            <th>
+                Tác giả
+            </th>
+            <th>
+                Nhà xuất bản
+            </th>
+            <th>
+                Năm xuất bản
+            </th>
+            <th>
+                Số lượng
+            </th>
+            <th>
+                Hình ảnh
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Maloai.Tenloaisach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tensach)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tacgia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NXB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Namxuatban)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Soluong)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Hinh)*@
+                    @Html.Image("../" + item.Hinh, "", "100")
+                </td>
+                <td>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.Masach }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Masach }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Masach })
+                </td>
+            </tr>
+        }
+
+    </table>
+    @* Phân trang *@
+    <div>
+        Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+        new
+        {
+            page,
+            sortOder = ViewBag.CurrentSort
+        }))
+    </div>
